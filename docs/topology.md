@@ -80,6 +80,14 @@ One complete, you can navigate to the IP address of your telemetry host using po
 
 Note: If your test environment is already set up, you can proceed to the [Data Harvest](dataharvest.md) section.
 
+### Digital Twin Creation
+
+The digital twin playbook is meant to map a physical environment and auto-generate a topology and interface mapping table that can be imported to CML for CI testing. This playbook will not fully work when mapping an already simulated evironment, but it is worth going through the excercise to understand the output.
+
+```
+ansible-playbook ciscops.mdd.cml_update_lab -i inventory_prod -e start_from=1 -e inventory_dir=inventory_test -e use_cat9kv=yes
+```
+
 If you need to set up your test environment, you have to change your environment variable to target mdd_test in CML and follow the same set of instructions a second time using the inventory_test directory.
 
 ```
