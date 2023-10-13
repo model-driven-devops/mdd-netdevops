@@ -17,7 +17,7 @@
 <img src="https://github.com/model-driven-devops/mdd-base/assets/65776483/02595e8b-188a-47e2-b0a6-893b93ddc502" width="50%" height="50%">
 </p>
 
-In this excerise, we will deploy our production environment. The repository contains both a mdd_prod topology file and an mdd_test topology file. Our production topology is fully configured, while our test topology has no configuration on it. For the instructor led classes, the test topology will already be created.
+In this excerise, we will deploy our production environment. The repository contains both an mdd_prod topology file and an mdd_test topology file. Our production topology is fully configured, while our test topology has no configuration on it. For the instructor led classes, the test topology will already be created.
 
 ## Deploy Production Topology
 
@@ -38,7 +38,7 @@ Take note of the IP addresses for NSO and Elastic so we can access them later in
 
 ## Deploy NSO
 
-For brownfield environments without a consistant API, NSO can be used as our single consistent API gateway into all of our infrastructure. To maintain a single source-of-truth, we use an NSO container for each environment (test and prod). When executing our pipeline, we target the NSO running in the correct environment. 
+For brownfield environments without a consistent API, NSO can be used as our single consistent API gateway into all of our infrastructure. To maintain a single source-of-truth, we use an NSO container for each environment (test and prod). When executing our pipeline, we target the NSO running in the correct environment. 
 
 Install NSO in server mode for prod environment.
 ```
