@@ -1,0 +1,82 @@
+---
+title: CISC-ND-000470 Schema
+type: object
+description: >
+  Network devices are capable of providing a wide variety of functions and services. Some of the functions
+  and services provided by default may not be necessary to support essential organizational operations.
+  Additionally, it is sometimes convenient to provide multiple services from a single component
+  (e.g., email and web services); however, doing so increases risk over limiting the services provided by
+  any one component. To support the requirements and principles of least functionality, the network device
+  must support the organizational requirements providing only essential capabilities and limiting the use of ports,
+  protocols, and/or services to only those required, authorized, and approved. Some network devices have
+  capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a
+  particular capability is used, then it must be documented and approved.
+required:
+  - openconfig-system:system
+properties:
+  openconfig-system:system:
+    type: object
+    required:
+      - openconfig-system-ext:services
+    properties:
+      openconfig-system-ext:services:
+        type: object
+        properties:
+          openconfig-system-ext:http:
+            type: object
+            properties:
+              openconfig-system-ext:config:
+                type: object
+                required:
+                  - openconfig-system-ext:http-enabled
+                properties:
+                  openconfig-system-ext:http-enabled:
+                    type: boolean
+                    const: false
+          openconfig-system-ext:config:
+            type: object
+            required:
+              - openconfig-system-ext:ip-bootp-server
+              - openconfig-system-ext:ip-dns-server
+              - openconfig-system-ext:ip-identd
+              - openconfig-system-ext:finger
+            properties:
+              openconfig-system-ext:ip-bootp-server:
+                type: boolean
+                const: false
+              openconfig-system-ext:ip-dns-server:
+                type: boolean
+                const: false
+              openconfig-system-ext:ip-identd:
+                type: boolean
+                const: false
+              openconfig-system-ext:finger:
+                type: boolean
+                const: false
+              openconfig-system-ext:ip-rcmd-rcp-enable:
+                type: boolean
+                const: false
+              openconfig-system-ext:ip-rcmd-rsh-enable:
+                type: boolean
+                const: false
+              openconfig-system-ext:service-config:
+                type: boolean
+                const: false
+              openconfig-system-ext:service-tcp-small-servers:
+                type: boolean
+                const: false
+              openconfig-system-ext:service-udp-small-servers:
+                type: boolean
+                const: false
+              openconfig-system-ext:service-pad:
+                type: boolean
+                const: false
+          openconfig-system-ext:boot-network:
+            type: object
+            properties:
+              openconfig-system-ext:config:
+                type: object
+                properties:
+                  openconfig-system-ext:bootnetwork-enabled:
+                    type: string
+                    const: DISABLED

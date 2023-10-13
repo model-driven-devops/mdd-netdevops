@@ -1,0 +1,36 @@
+---
+title: CISC-ND-001450
+description: >
+  The aggregation of log data kept on a syslog server can be used to detect attacks
+  and trigger an alert to the appropriate security personnel. The stored log data
+  can used to detect weaknesses in security that enable the network IA team to find
+  and address these weaknesses before breaches can occur. Reviewing these logs, whether
+  before or after a security breach, are important in showing whether someone is an
+  internal employee or an outside threat.
+# This schema validates oc-system settings contain at least one logging server.
+type: object
+properties:
+  openconfig-system:system:
+    type: object
+    properties:
+      openconfig-system:logging:
+        type: object
+        properties:
+          openconfig-system:remote-servers:
+            type: object
+            properties:
+              openconfig-system:remote-server:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  properties:
+                    openconfig-system:host:
+                      type: string
+                      format: ipv4
+                  required:
+                    - openconfig-system:host
+            required:
+              - openconfig-system:remote-server
+        required:
+          - openconfig-system:remote-servers

@@ -1,0 +1,35 @@
+---
+title: CISR-ND-000049 Schema
+type: object
+description: >
+  Authentication for administrative (privileged level) access to the device is required at all times.
+  An account can be created on the device's local database for use in an emergency, such as when the
+  authentication server is down or connectivity between the device and the authentication server is
+  not operable. This account is also referred to as the account of last resort since the emergency
+  administration account is strictly intended to be used only as a last resort and immediate
+  administrative access is absolutely necessary. The number of emergency administration accounts is
+  restricted to at least one, but no more than operationally required as determined by the ISSO.
+  The emergency administration account logon credentials must be stored in a sealed envelope and
+  kept in a safe.
+properties:
+  tailf-ned-cisco-ios:username:
+    type: array
+    contains:
+      properties:
+        name:
+          type: string
+        privilege:
+          const: 15
+        secret:
+          type: object
+          properties:
+            type:
+              type: string
+            secret:
+              type: string
+      required:
+        - name
+        - privilege
+        - secret
+    minContains: 1
+    maxContains: 1 

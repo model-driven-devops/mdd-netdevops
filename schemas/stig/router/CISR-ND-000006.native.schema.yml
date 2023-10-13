@@ -1,0 +1,71 @@
+---
+title: CISC-ND-000006
+## Validates AAA Server exists
+description: >
+  All accounts used for access to the network device are privileged or system-level accounts.
+  Therefore, if account management functions are not automatically enforced, an attacker could
+  gain privileged access to a vital element of the network security architecture. The use of
+  Authentication, Authorization, and Accounting (AAA) affords the best methods for controlling
+  user access, authorization levels, and activity logging. By enabling AAA on the routers in
+  conjunction with an authentication server such as TACACS+ or RADIUS, the administrators can
+  easily add or remove user accounts, add or remove command authorizations, and maintain a log
+  of user activity. The use of an authentication server provides the capability to assign device
+  administrators to tiered groups that contain their privilege level, which is used for authorization
+  of specific commands. This control does not include emergency administration accounts that
+  provide access to the network device components in case of network failure. There must be only
+  one such locally defined account. All other accounts must be defined. All other accounts must be
+  created and managed on the site's authentication server (e.g., RADIUS, LDAP, or Active Directory).
+  This requirement is applicable to account management functions provided by the network device.
+type: object
+properties:
+  tailf-ned-cisco-ios:aaa:
+    type: object
+    properties:
+      new-model:
+        type: array
+      group:
+        type: object
+        properties:
+          server:
+            type: object
+            properties:
+              tacacs-plus:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    server:
+                      type: object
+                      properties:
+                        name:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                      required:
+                        - name
+                    ip:
+                      type: object
+                      properties:
+                        vrf:
+                          type: object
+                          properties:
+                            forwarding:
+                              type: string
+                          required:
+                            - forwarding
+                    tacacs:
+                      type: object
+                      properties:
+                        source-interface:
+                          type: object
+                          properties:
+                            TenGigabitEthernet:
+                              type: object
+    required:
+      - new-model
+      - group

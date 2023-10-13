@@ -1,0 +1,61 @@
+title: logging remote-server validation
+description: >
+  This schema validates the presence of logging servers.
+type: object
+properties:
+  openconfig-system:system:
+    type: object
+    properties:
+      openconfig-system:logging:
+        type: object
+        properties:
+          openconfig-system:remote-servers:
+            type: object
+            properties:
+              openconfig-system:remote-server:
+                type: array
+                items:
+                  type: object
+                allOf:
+{% for remote_server in validate_vars.remote_servers %}
+                  - contains:
+                      properties:
+                        openconfig-system:host:
+                          type: string
+                          const: {{ remote_server.host }}
+                          format: ipv4
+                        openconfig-system:config:
+                          type: object
+                          properties:
+                            openconfig-system:host:
+                              type: string
+                              const: {{ remote_server.host }}
+                              format: ipv4
+                            openconfig-system:remote-port:
+                              type: integer
+                              const: {{ remote_server.port }}
+                            openconfig-system:source-address:
+                              type: string
+                              const: {{ remote_server.source_address }}
+                              format: ipv4
+                            openconfig-system-ext:use-vrf:
+                              type: string
+                              const: {{ remote_server.use_vrf }}
+                        openconfig-system:selectors:
+                          type: object
+                          properties:
+                            openconfig-system:selector:
+                              type: array
+                              contains:
+                                openconfig-system:facility:
+                                  type: string
+                                openconfig-system:severity:
+                                  type: string
+                                openconfig-system:config:
+                                  type: object
+                                  properties:
+                                    openconfig-system:facility:
+                                      type: string
+                                    openconfig-system:severity:
+                                      type: string
+{% endfor %} 

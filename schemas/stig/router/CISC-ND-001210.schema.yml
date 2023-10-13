@@ -1,0 +1,51 @@
+---
+title: CISC-ND-001210 Schema
+type: object
+description: >
+  This requires the use of secure protocols instead of their unsecured counterparts,
+  such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP.
+  If unsecured protocols (lacking cryptographic mechanisms) are used for sessions,
+  the contents of those sessions will be susceptible to eavesdropping, potentially
+  putting sensitive data (including administrator passwords) at risk of compromise
+  and potentially allowing hijacking of maintenance sessions.
+required:
+  - openconfig-system:system
+properties:
+  openconfig-system:system:
+    type: object
+    required:
+      - openconfig-system:ssh-server
+    properties:
+      openconfig-system:ssh-server:
+        type: object
+        required:
+        - openconfig-system:config
+        - openconfig-system-ext:algorithm
+        properties:
+          openconfig-system:config:
+            type: object
+            required:
+            - openconfig-system:protocol-version
+            properties:
+              openconfig-system:protocol-version:
+                type: string
+                const: V2
+          openconfig-system-ext:algorithm:
+            type: object
+            required:
+            - openconfig-system-ext:config
+            properties:
+              openconfig-system-ext:config:
+                type: object
+                required:
+                - openconfig-system-ext:encryption
+                properties:
+                  openconfig-system-ext:encryption:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - aes256-ctr
+                        - aes192-ctr
+                        - aes128-ctr
+                    minItems: 1

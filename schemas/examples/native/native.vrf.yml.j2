@@ -1,0 +1,17 @@
+type: object
+properties:
+	tailf-ned-cisco-ios:interface:
+		type: object
+		properties:
+			TenGigabitEthernet:
+				type: array
+				items:
+					type: object
+				allOf:
+{% for native_vrf in validate_vars.native_vrfs %}
+					- contains:
+							properties:
+								name:
+									type: string
+									enum: {{ native_vrf.name }}
+{% endfor %}

@@ -1,0 +1,21 @@
+---
+title: CISC-RT-000150 Schema
+type: object
+description: >
+  A gratuitous ARP is an ARP broadcast in which the source and destination MAC addresses
+  are the same. It is used to inform the network about a host IP address. A spoofed
+  gratuitous ARP message can cause network mapping information to be stored incorrectly,
+  causing network malfunction.
+properties:
+  openconfig-system:system:
+    type: object
+    properties:
+      openconfig-system-ext:services:
+        type: object
+        properties:
+          openconfig-system-ext:config:
+            type: object
+            properties:
+              openconfig-system-ext:ip-gratuitous-arps:
+                type: boolean
+                const: false

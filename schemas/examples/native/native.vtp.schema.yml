@@ -1,0 +1,18 @@
+type: object
+properties:
+  tailf-ned-cisco-ios:vtp:
+    type: object
+    properties:
+      version:
+        type: integer
+        const: 1
+      domain:
+        type: string
+        pattern: '^[A-Z0-9_]+$'
+      mode:
+        type: string
+        enum: [transparent]
+    required:
+      - version
+required:
+  - tailf-ned-cisco-ios:vtp

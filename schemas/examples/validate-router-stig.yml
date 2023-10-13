@@ -1,0 +1,37 @@
+---
+mdd_tags:
+  - router_stig
+mdd_schemas:
+  # - name: CISC-ND-000210
+  #   file: 'stig/router/CISC-ND-000210.schema.yml'
+  # - name: CISC-ND-000250
+  #   file: 'stig/router/CISC-ND-000250.schema.yml'
+  # - name: CISC-ND-000330
+  #   file: 'stig/router/CISC-ND-000330.schema.yml'
+  # - name: CISC-ND-000470
+  #   file: 'stig/router/CISC-ND-000470.schema.yml'
+  # - name: CISC-ND-000620
+  #   file: 'stig/router/CISC-ND-000620.schema.yml'
+  # - name: CISC-ND-000720
+  #   file: 'stig/router/CISC-ND-000720.schema.yml'
+  # - name: CISC-ND-001210
+  #   file: 'stig/router/CISC-ND-001210.schema.yml'
+  # - name: CISC-ND-001200
+  #   file: 'stig/router/CISC-ND-001200.schema.yml'
+  - name: CISR-ND-000015
+    file: 'stig/router/CISR-ND-000015.schema.yml'
+  - name: CISC-ND-001450
+    file: 'stig/router/CISC-ND-001450.schema.yml' 
+  - name: CISC-ND-001030
+    file: 'stig/router/CISC-ND-001030.schema.yml' 
+  - name: CISC-RT-000150
+    file: 'stig/router/CISC-RT-000150.schema.yml' 
+  - name: CISC-ND-0014400
+    key: config
+    file: 'stig/router/CISC-ND-001440.native.schema.yml'
+  - name: CISR-ND-000049
+    key: config
+    file: 'stig/router/CISR-ND-000049.native.schema.yml'
+  - name: CISR-ND-000006
+    key: config
+    file: 'stig/router/CISR-ND-000006.native.schema.yml'

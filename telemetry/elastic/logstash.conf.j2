@@ -1,0 +1,24 @@
+input {
+  kafka {
+    bootstrap_servers => "192.133.186.217:9094"
+    topics => ["kafka_topic_1"]
+  }
+}
+
+filter {
+  json {
+    source => "message"
+    target => "mdt"
+  }
+}
+
+
+output {
+  elasticsearch {
+   index => "kafka-%{+YYYY.MM.dd}"
+   hosts=> "${ELASTIC_HOSTS}"
+   user=> "${ELASTIC_USER}"
+   password=> "${ELASTIC_PASSWORD}"
+   cacert=> "certs/ca/ca.crt"
+ }
+}

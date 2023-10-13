@@ -1,0 +1,33 @@
+---
+title: CISC-ND-001440
+description: >
+  For user certificates, each organization obtains certificates from an approved, shared service 
+  provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure
+  cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, 
+  this Certification Authority will suffice.
+type: object
+properties:
+  tailf-ned-cisco-ios:crypto:
+    type: object
+    properties:
+      pki: 
+        type: object
+        properties:
+          trustpoint: 
+            type: array
+            contains:
+              type: object
+              properties:
+                id: 
+                  type: string
+                enrollment:
+                  type: object
+                  properties:
+                    terminal:
+                      type: object
+                      properties:
+                        pem:
+                          type: array
+                subject-name:
+                  type: string
+                  pattern: ".*DoD.*Government.*"

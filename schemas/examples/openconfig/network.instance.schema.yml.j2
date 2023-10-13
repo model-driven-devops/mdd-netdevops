@@ -1,0 +1,86 @@
+title: OpenConfig vlan interface check
+type: object
+required:
+  - openconfig-network-instance:network-instances
+properties:
+  openconfig-network-instance:network-instances:
+    type: object
+    required:
+      - openconfig-network-instance:network-instance
+    properties:
+      openconfig-network-instance:network-instance:
+        type: array
+        items:
+          type: object      
+          properties:
+            openconfig-network-instance:name:
+              type: string
+            openconfig-network-instance:config:
+              type: object
+              properties:
+                openconfig-network-instance:name:
+                  type: string
+                openconfig-network-instance:type:
+                  type: string
+                openconfig-network-instance:enabled:
+                  type: string
+            openconfig-network-instance:protocols:
+              type: object
+              properties:
+                openconfig-network-instance:protocol:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      openconfig-network-instance:identifier:
+                        type: string
+                      openconfig-network-instance:name:
+                        type: string
+                      openconfig-network-instance:config:
+                        type: object
+                        properties:
+                          openconfig-network-instance:identifier:
+                            type: string
+                          openconfig-network-instance:name:
+                            type: string
+                      openconfig-network-instance:static-routes:
+                        type: object
+            openconfig-network-instance:interfaces:
+              type: object
+              properties:
+                openconfig-network-instance:interface:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      openconfig-network-instance:id:
+                        type: string
+                      openconfig-network-instance:config:
+                        type: object
+            openconfig-network-instance:vlans:
+              type: object
+              properties:
+                openconfig-network-instance:vlan:
+                  type: array
+                  items:
+                    type: object
+                  allOf:
+{% for vlan_instance in validate_vars.vlan_instances %} 
+                    - contains:
+                        properties:
+                          openconfig-network-instance:vlan-id:
+                            type: integer
+                            const: {{ vlan_instance.id }}
+                          openconfig-network-instance:config:
+                            type: object
+                            properties:
+                              openconfig-network-instance:vlan-id:
+                                type: integer
+                                const: {{ vlan_instance.id }}
+                              openconfig-network-instance:name:
+                                type: string
+                                const: {{ vlan_instance.name }} 
+                              openconfig-network-instance:status:
+                                type: string
+                                enum: ACTIVE 
+{% endfor %} 

@@ -1,0 +1,31 @@
+---
+title: CISC-ND-000330
+type: object
+description: >
+  Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough
+  information. Organizations consider limiting the additional audit information to only that information
+  explicitly needed for specific audit requirements. The additional information required is dependent on the
+  type of information (i.e., sensitivity of the data and the environment within which it resides). At a minimum,
+  the organization must audit full-text recording of privileged commands. The organization must maintain audit
+  trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+required:
+  - openconfig-system:system
+properties:
+  openconfig-system:system:
+    type: object
+    required:
+      - openconfig-system-ext:services
+    properties:
+      openconfig-system-ext:services:
+        type: object
+        required:
+          - openconfig-system-ext:config 
+        properties:
+          openconfig-system-ext:config:
+            type: object
+            required:
+              - openconfig-system-ext:archive-logging
+            properties:
+              openconfig-system-ext:archive-logging:
+                type: boolean
+                const: true

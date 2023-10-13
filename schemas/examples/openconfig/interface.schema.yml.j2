@@ -1,0 +1,61 @@
+title: OpenConfig loopback interface check
+type: object
+required:
+  - openconfig-interfaces:interfaces
+properties:
+  openconfig-interfaces:interfaces:
+    type: object
+    required:
+      - openconfig-interfaces:interface
+    properties:
+      openconfig-interfaces:interface:
+        type: array
+        items:
+          type: object
+        allOf:
+{% for interface in validate_vars.interfaces %}        
+          - contains:
+              properties:
+                openconfig-interfaces:name:
+                  type: string
+                  const: {{ interface.name }}
+                openconfig-interfaces:config:
+                  type: object
+                  properties:
+                    openconfig-interfaces:name:
+                      type: string
+                      const: {{ interface.name }}
+                    openconfig-interfaces:type:
+                      type: string
+                    openconfig-interfaces:description:
+                      type: string
+                      enum: {{ interface.description }}
+                    openconfig-interfaces:enabled:
+                      type: boolean
+                openconfig-interfaces:subinterfaces:
+                  type: object
+                  properties:
+                    openconfig-interfaces:subinterface:
+                      type: array
+                      contains:
+                        type: object
+                        properties:
+                          openconfig-interfaces:index:
+                            type: number
+                          openconfig-interfaces:config:
+                            type: object
+                          openconfig-if-ip:ipv4:
+                            type: object
+                            properties:
+                              openconfig-if-ip:addresses:
+                                type: object
+                                properties: 
+                                  openconfig-if-ip:address:
+                                    type: array
+                                    contains:
+                                      type: object
+                                      properties:
+                                        openconfig-if-ip:ip:
+                                          type: string
+                                          format: ipv4
+{% endfor %} 

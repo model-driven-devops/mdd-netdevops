@@ -1,0 +1,16 @@
+# ansible_collections/*
+envvars
+# inventory/*
+venv-mdd/
+venv*/
+ansible_collections/
+.virl/
+.virlrc
+*.pyc
+*.retry
+*.signed.bin
+.cache/
+collections/
+envvars
+config.yaml
+labs.yaml

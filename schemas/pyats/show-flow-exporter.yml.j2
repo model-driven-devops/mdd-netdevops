@@ -1,0 +1,23 @@
+---
+type: object
+required:
+  - flow_exporter_name
+properties:
+  flow_exporter_name:
+    type: object
+    required:
+      - {{ check_vars.exporter_name }}
+    properties:
+      {{ check_vars.exporter_name }}:
+        type: object
+        required:
+          - transport_config
+        properties:
+          transport_config:
+            type: object
+            required:
+              - destination_ip_address
+            properties:
+              destination_ip_address:
+                type: string
+                const: {{ check_vars.destination_address }}

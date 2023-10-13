@@ -1,0 +1,18 @@
+title: OpenConfig system domain-name schema
+type: object
+properties:
+  openconfig-system:system:
+    type: object
+    properties:
+      openconfig-system:config:
+        type: object
+        properties:
+          openconfig-system:domain-name:
+            type: string
+            enum: {{ validate_vars.domain_name }}
+        required:
+          - openconfig-system:domain-name
+    required:
+      - openconfig-system:config
+  required:
+    - openconfig-system:system

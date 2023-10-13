@@ -1,0 +1,30 @@
+---
+title: CISC-ND-000210 Schema
+type: object
+description: >
+  This requirement supports non-repudiation of actions taken by an administrator and is required in order to
+  maintain the integrity of the configuration management process. All configuration changes to the network
+  device are logged, and administrators authenticate with two-factor authentication before gaining administrative
+  access. Together, these processes will ensure the administrators can be held accountable for the configuration
+  changes they implement. To meet this requirement, the network device must log administrator access and activity.
+required:
+  - openconfig-system:system
+properties:
+  openconfig-system:system:
+    type: object
+    required:
+      - openconfig-system-ext:services
+    properties:
+      openconfig-system-ext:services:
+        type: object
+        required:
+          - openconfig-system-ext:config 
+        properties:
+          openconfig-system-ext:config:
+            type: object
+            required:
+              - openconfig-system-ext:archive-logging
+            properties:
+              openconfig-system-ext:archive-logging:
+                type: boolean
+                const: true

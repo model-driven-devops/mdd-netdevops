@@ -1,0 +1,19 @@
+---
+mdd_tags:
+  - all
+mdd_schemas:
+  - name: interface
+    file: 'examples/openconfig/interface.schema.yml.j2'
+    validate_vars:
+      interfaces:
+        - interface: GigEthernet1
+          name: GigEthernet1
+          description: uplink
+  - name: vlan
+    file: 'example/openconfig/vlan.schema.yml.j2'
+    validate_vars:
+      vlans:
+        - vlan: Vlan1
+          name: Vlan1
+          type: l3ipvlan
+          description: Management

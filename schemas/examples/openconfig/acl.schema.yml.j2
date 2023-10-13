@@ -1,0 +1,78 @@
+title: OpenConfig ACL validation schema
+type: object
+# This shchema validates ACLs in OpenConfig format
+properties:
+    openconfig-acl:acl:
+        type: object
+        properties:
+            openconfig-acl:acl-sets:
+                type: object
+                properties:
+                    openconfig-acl:acl-set:
+                        type: array
+                        items:
+                            type: object
+                        allOf:
+{% for acl in validate_vars.acls %}
+                            - contains:
+                                properties:
+                                    openconfig-acl:name:
+                                        type: string
+                                        const: {{ acl.name }}
+                                    openconfig-acl:type:
+                                        type: string
+                                        const: {{ acl.type }}
+                                    openconfig-acl:config:
+                                        type: object
+                                        properties:
+                                            openconfig-acl:name:
+                                                type: string
+                                                const: {{ acl.name }}
+                                            openconfig-acl:type:
+                                                type: string
+                                                const: {{ acl.type }}
+                                            openconfig-acl:description:
+                                                type: string
+                                    openconfig-acl:acl-entries:
+                                        type: object
+                                        properties:
+                                            openconfig-acl:acl-entry:
+                                                type: array
+                                                contains:
+                                                    type: object
+                                                    properties:
+                                                        openconfig-acl:sequence-id:
+                                                            type: integer
+                                                        openconfig-acl:config:
+                                                            type: object
+                                                            properties:
+                                                                openconfig-acl:sequence-id:
+                                                                    type: integer
+                                                        openconfig-acl:actions:
+                                                            type: object
+                                                            properties:
+                                                                openconfig-acl:config:
+                                                                    type: object
+                                                                    properties:
+                                                                        openconfig-acl:forwarding-action:
+                                                                            type: string
+                                                                            const: {{ acl.action }}
+                                                                        openconfig-acl:log-action:
+                                                                            type: string
+                                                                    required:
+                                                                        - openconfig-acl:forwarding-action
+                                                                        - openconfig-acl:log-action
+                                                                required:
+                                                                    - openconfig-acl:config
+                                                        openconfig-acl-ext:ipv4:
+                                                            type: object
+                                                            properties:
+                                                                openconfig-acl-ext:config:
+                                                                    type: object
+                                                                    properties:
+                                                                        openconfig-acl-ext:source-address:
+                                                                            type: string
+                                                                            const: {{ acl.source_address }}
+                                                        required:
+                                                            - openconfig-acl-ext:config
+{% endfor %}

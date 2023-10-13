@@ -1,0 +1,19 @@
+type: object
+properties:
+  flow_exporter:
+    type: object
+    properties:
+      {{ check_vars.exporter_name }}:
+        type: object
+        properties:
+          client_send_stats:
+            type: object
+          pkt_send_stats:
+            type: object
+            properties:
+              successfully_sent:
+                type: integer
+                minimum: 1
+              successfully_sent_bytes:
+                type: integer
+                minimum: 1

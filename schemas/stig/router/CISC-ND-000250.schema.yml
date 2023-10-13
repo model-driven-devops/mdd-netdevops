@@ -1,0 +1,37 @@
+---
+title: CISC-ND-000250 Schema
+type: object
+description: >
+  Without generating audit records that are specific to the security and mission needs of the
+  organization, it would be difficult to establish, correlate, and investigate the events
+  relating to an incident or identify those responsible for one. Audit records can be generated
+  from various components within the information system (e.g., module or policy filter).
+required:
+  - openconfig-system:system
+properties:
+  openconfig-system:system:
+    type: object
+    required:
+      - openconfig-system-ext:services
+    properties:
+      openconfig-system-ext:services:
+        type: object
+        required:
+          - openconfig-system-ext:login-security-policy
+        properties:
+          openconfig-system-ext:login-security-policy:
+            type: object
+            required:
+              - openconfig-system-ext:config
+            properties:
+              openconfig-system-ext:config:
+                required:
+                  - openconfig-system-ext:on-success
+                  - openconfig-system-ext:on-failure
+                properties:
+                  openconfig-system-ext:on-success:
+                    type: boolean
+                    const: true
+                  openconfig-system-ext:on-failure:
+                    type: boolean
+                    const: true

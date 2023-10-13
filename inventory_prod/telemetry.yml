@@ -1,0 +1,11 @@
+all:
+  children:
+    telemetry:
+      vars:
+        ansible_user: "{{ lookup('env', 'TELEMETRY_USERNAME') | default('ubuntu', true) }}"
+        ansible_password: "{{ lookup('env', 'TELEMETRY_PASSWORD') | default('admin', true) }}"
+        ansible_python_interpreter: /usr/bin/python3
+        # influx_available: true
+        # influxDB_address: "{{ lookup('env', 'INFLUXDB_ADDRESS') | default (false, true) }}"
+      hosts:
+        telemetry:

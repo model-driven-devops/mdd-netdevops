@@ -1,0 +1,16 @@
+ansible==4.5.0
+virl2_client==2.4.0
+netaddr
+pynetbox
+jsonschema
+ipaddress
+paramiko
+jmespath
+passlib
+botocore
+boto3
+nso-oc==2.78.0
+networkx
+scipy
+Jinja2
+pyyaml

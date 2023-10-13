@@ -1,0 +1,30 @@
+title: CISC-ND-000720 Schema
+type: object
+description: >
+ Terminating an idle session within a short time period reduces the window of opportunity for unauthorized
+ personnel to take control of a management session enabled on the console or console port that has been
+ left unattended. In addition, quickly terminating an idle session will also free up resources committed
+ by the managed network element. Terminating network connections associated with communications sessions
+ includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level,
+ or de-allocating networking assignments at the application level if multiple application sessions are
+ using a single, operating system-level network connection. This does not mean that the device terminates
+ all sessions or network access; it only ends the inactive session and releases the resources associated
+ with that session.
+required:
+  - openconfig-system:system
+properties:
+  openconfig-system:system:
+    type: object
+    required:
+      - openconfig-system:config
+    properties:
+      openconfig-system:config:
+        type: object
+        required:
+          - openconfig-system-ext:console-exec-timeout-seconds
+        properties:
+          openconfig-system-ext:console-exec-timeout-seconds:
+            type: number
+            minimum: 0
+            maximum: 600
+

@@ -1,0 +1,36 @@
+---
+title: CISC-L2-000180 Schema
+type: object
+description: >
+  STP is implemented on bridges and switches to prevent Layer 2 loops when a broadcast domain
+  spans multiple bridges and switches and when redundant links are provisioned to provide high
+  availability in case of link failures. Convergence time can be significantly reduced using
+  Rapid STP (802.1w) instead of STP (802.1d), resulting in improved availability. Rapid STP
+  should be deployed by implementing either Rapid Per-VLAN-Spanning-Tree (Rapid-PVST) or
+  Multiple Spanning-Tree Protocol (MSTP). The latter scales much better when there are many
+  VLANs.
+required:
+  - openconfig-spanning-tree:stp
+properties:
+  openconfig-spanning-tree:stp:
+    type: object
+    required:
+      - openconfig-spanning-tree:global
+    properties:
+      openconfig-spanning-tree:global:
+        type: object
+        required:
+          - openconfig-spanning-tree:config
+        properties:
+          openconfig-spanning-tree:config:
+            type: object
+            required:
+              - openconfig-spanning-tree:enabled-protocol
+            properties:
+              openconfig-spanning-tree:enabled-protocol:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - RAPID_PVST
+                    - MST

@@ -1,0 +1,41 @@
+---
+title: CISC-ND-001200 Schema
+type: object
+description: >
+  Unapproved mechanisms that are used for authentication to the cryptographic module are not verified
+  and therefore cannot be relied upon to provide confidentiality or integrity, and DoD data may be
+  compromised. Nonlocal maintenance and diagnostic activities are those activities conducted by
+  individuals communicating through a network, either an external network (e.g., the Internet) or an
+  internal network. Currently, HMAC is the only FIPS-approved algorithm for generating and verifying
+  message/data authentication codes in accordance with FIPS 198-1. Products that are FIPS 140-2
+  validated will have an HMAC that meets specification; however, the option must be configured for
+  use as the only message authentication code used for authentication to cryptographic modules.
+required:
+  - openconfig-system:system
+properties:
+  openconfig-system:system:
+    type: object
+    required:
+      - openconfig-system:ssh-server
+    properties:
+      openconfig-system:ssh-server:
+        type: object
+        required:
+        - openconfig-system-ext:algorithm
+        properties:
+          openconfig-system-ext:algorithm:
+            type: object
+            required:
+            - openconfig-system-ext:config
+            properties:
+              openconfig-system-ext:config:
+                type: object
+                required:
+                - openconfig-system-ext:mac
+                properties:
+                  openconfig-system-ext:mac:
+                    type: array
+                    items:
+                      type: string
+                      enum: 
+                        - hmac-sha2-256

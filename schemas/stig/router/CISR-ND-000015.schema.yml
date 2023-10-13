@@ -1,0 +1,54 @@
+---
+title: CISC-ND-000015
+description: >
+  By limiting the number of failed login attempts, the risk of unauthorized system access via
+  user password guessing, otherwise known as brute-forcing, is reduced.
+type: object
+properties:
+  openconfig-system:system:
+    type: object
+    required:
+      - openconfig-system-ext:services
+    properties:
+      openconfig-system-ext:services:
+        type: object
+        required:
+          - openconfig-system-ext:login-security-policy
+        properties:
+          openconfig-system-ext:login-security-policy:
+            type: object
+            required:
+              - openconfig-system-ext:config
+              - openconfig-system-ext:block-for
+            properties:
+              openconfig-system-ext:config:
+                type: object
+                required:
+                  - openconfig-system-ext:on-success
+                  - openconfig-system-ext:on-failure
+                properties:
+                  openconfig-system-ext:on-success:
+                    type: boolean
+                  openconfig-system-ext:on-failure:
+                    type: boolean
+              openconfig-system-ext:block-for:
+                type: object
+                required:
+                  - openconfig-system-ext:config
+                properties:
+                  openconfig-system-ext:config:
+                    type: object
+                    required:
+                      - openconfig-system-ext:seconds
+                      - openconfig-system-ext:attempts
+                      - openconfig-system-ext:within
+                    properties:
+                      openconfig-system-ext:seconds:
+                        type: integer
+                        maximum: 600
+                      openconfig-system-ext:attempts:
+                        type: integer
+                        maximum: 3
+                      openconfig-system-ext:within:
+                        type: integer
+                        maximum: 900
