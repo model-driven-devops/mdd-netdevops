@@ -66,8 +66,6 @@ To deploy the telemetry stack, run the telemetry install playbook.
 ```
 ansible-playbook ciscops.mdd.telemetry_install_elastic -i inventory_prod
 ```
-Note: Similar to NSO, if you find an issue with the playbook stalling, SSH into the host to add the fingerprint and execute the playbook again.
-
 This may take some time, because we are installing docker on the host, deploying containers, and waiting for the stack to come up.
 Once the containers are up and running, you will see a report verifying each one is working correctly.
 
