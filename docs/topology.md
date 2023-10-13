@@ -44,7 +44,6 @@ Install NSO in server mode for prod environment.
 ```
 ansible-playbook ciscops.mdd.nso_install -i inventory_prod
 ```
-Note: If you find the playbook stalls, you may need to ssh into the ubuntu host just to add the fingerprint to your localhost, then execute the playbook. You can find the NSO IP address by running the inventory playbook and ssh using ubuntu/admin.
 
 Install NSO MDD Packages in prod environment
 ```
