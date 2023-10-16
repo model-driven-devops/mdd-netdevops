@@ -20,7 +20,7 @@ image: ghcr.io/model-driven-devops/mdd:latest
 clean:
   stage: clean
   script:
-    - ansible-playbook cisco.cml.clean
+    - ansible-playbook -i inventory_test cisco.cml.clean
   resource_group: mdd
   rules:
     - if: $CLEAN == "true"
@@ -28,7 +28,7 @@ clean:
 build-cml:
   stage: build-cml
   script:
-    - ansible-playbook cisco.cml.build -e startup='host' -e wait='yes' -e retries=100
+    - ansible-playbook -i inventory_test cisco.cml.build -e startup='host' -e wait='yes' -e retries=100
   resource_group: mdd
   rules:
     - if: $CLEAN == "true"
@@ -36,10 +36,10 @@ build-cml:
 build-nso:
   stage: build-nso
   script:
-    - ansible-playbook ciscops.mdd.nso_install
-    - ansible-playbook ciscops.mdd.nso_update_packages
-    - ansible-playbook ciscops.mdd.nso_init
-    - ansible-playbook ciscops.mdd.nso_update_devices
+    - ansible-playbook -i inventory_test ciscops.mdd.nso_install
+    - ansible-playbook -i inventory_test ciscops.mdd.nso_update_packages
+    - ansible-playbook -i inventory_test ciscops.mdd.nso_init
+    - ansible-playbook -i inventory_test ciscops.mdd.nso_update_devices
   resource_group: mdd
   rules:
     - if: $CLEAN == "true" && $NSO_INSTALL == "true"
@@ -47,10 +47,10 @@ build-nso:
 init-nso:
   stage: init-nso
   script:
-    - ansible-playbook ciscops.mdd.nso_init
-    - ansible-playbook ciscops.mdd.nso_delete_devices
-    - ansible-playbook ciscops.mdd.nso_update_devices
-    # - ansible-playbook ciscops.mdd.update -e dry_run=no
+    - ansible-playbook -i inventory_test ciscops.mdd.nso_init
+    - ansible-playbook -i inventory_test ciscops.mdd.nso_delete_devices
+    - ansible-playbook -i inventory_test ciscops.mdd.nso_update_devices
+    # - ansible-playbook -i inventory_test ciscops.mdd.update -e dry_run=no
   resource_group: mdd
   rules:
     - if: $NSO_INIT == "true"
