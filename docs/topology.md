@@ -17,7 +17,7 @@
 <img src="https://github.com/model-driven-devops/mdd-base/assets/65776483/02595e8b-188a-47e2-b0a6-893b93ddc502" width="50%" height="50%">
 </p>
 
-In this excerise, we will deploy our production environment. The repository contains both an mdd_prod topology file and an mdd_test topology file. Our production topology is fully configured, while our test topology has no configuration on it. For the instructor led classes, the test topology will already be created.
+In this exercise, we will deploy our production environment. The repository contains both an mdd_prod topology file and an mdd_test topology file. Our production topology is fully configured, while our test topology has no configuration on it. For the instructor led classes, the test topology will already be created.
 
 ## Deploy Production Topology
 
@@ -34,7 +34,7 @@ ansible-playbook cisco.cml.inventory -i inventory_prod
 ```
 ![Screenshot 2023-08-25 at 2 56 22 PM](https://github.com/model-driven-devops/mdd-base/assets/65776483/479b02e0-15b2-4e38-bbf4-ff7b07f6a6de)
 
-Take note of the IP addresses for NSO and Elastic so we can access them later in the labs.
+Take note of the IP addresses for NSO and Elastic, so we can access them later in the labs.
 
 ## Deploy NSO
 
@@ -82,7 +82,7 @@ Note: If your test environment is already set up, you can proceed to the [Data H
 
 ### Digital Twin Creation
 
-The digital twin playbook is meant to map a physical environment and auto-generate a topology and interface mapping table that can be imported to CML for CI testing. This playbook will not fully work when mapping an already simulated evironment, but it is worth going through the excercise to understand the output.
+The digital twin playbook is meant to map a physical environment and auto-generate a topology and interface mapping table that can be imported to CML for CI testing. This playbook will not fully work when mapping an already simulated environment, but it is worth going through the exercise to understand the output.
 
 ```
 ansible-playbook ciscops.mdd.cml_update_lab -i inventory_prod -e start_from=1 -e inventory_dir=inventory_test -e use_cat9kv=yes

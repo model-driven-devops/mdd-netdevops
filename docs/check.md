@@ -14,11 +14,11 @@
 
 ## Stateful Checks
 
-In this excercise, we will use the concept of "test driven development" to create a stateful check as part of our pipeline. Test driven development simply means you write your test before you make your change to your infrastructure. In this training we are working with Elastic to monitor our traffic flows and collect telemetry. Before we configure our network, lets write a test that will check that we have our netflow router configured correctly.
+In this exercise, we will use the concept of "test driven development" to create a stateful check as part of our pipeline. Test driven development simply means you write your test before you make your change to your infrastructure. In this training we are working with Elastic to monitor our traffic flows and collect telemetry. Before we configure our network, lets write a test that will check that we have our netflow router configured correctly.
 
 ## Check File
 
-Once the validation step completes, your configuration is pushed into the test network and onto the simulated devices. After this occures, the "Check" phase of your pipeline uses PyATS to execute commands on specefic devices. The output of those commands can be compared to additional schemas.
+Once the validation step completes, your configuration is pushed into the test network and onto the simulated devices. After this occurs, the "Check" phase of your pipeline uses PyATS to execute commands on specific devices. The output of those commands can be compared to additional schemas.
 
 First, we want to enable our netflow check by moving the "check-netflow.yml" file into your mdd-data directory. You can do this by opening your gitlab IDE and selecting rename on the check-netflow.yml file in the schemas/examples directory.
 
@@ -49,7 +49,7 @@ mdd_checks:
 
 ## Schema File
 
-Once pyATS runs the commands on the specefied host, it will send the output back. Open up the schema files under schema/pyats to see our expected output.
+Once pyATS runs the commands on the specified host, it will send the output back. Open up the schema files under schema/pyats to see our expected output.
 
 show-flow-exporter.yml.j2
 ```
@@ -72,7 +72,7 @@ In this schema, the output needs to match the format with the variables defined 
 
 ![Screenshot 2023-09-27 at 12 32 31 PM](https://github.com/model-driven-devops/mdd-base/assets/65776483/654fcf8a-05ba-46eb-88df-d59220517608)
 
-Once you commit your change, the pipeline will run and you will see our hq-pop router failed the check because we haven't actually configured our device yet.
+Once you commit your change, the pipeline will run, and you will see our hq-pop router failed the check because we haven't actually configured our device yet.
 
 ![Screenshot 2023-09-27 at 2 49 27 PM](https://github.com/model-driven-devops/mdd-base/assets/65776483/076157e5-b1c5-431c-9536-3bb4bb6039a5)
 

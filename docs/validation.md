@@ -16,9 +16,9 @@
 
 The base MDD repository includes pre-built templates for both data validation and stateful check phases of the pipeline. These can be found under the "Schemas" folder. 
 
-The validation phase of the pipeline is a basic data check. Data in your mdd-data directory (source of truth) is compared to schemas that represent what you want your network to look like. These schemas verify confguration changes match or are complient before being applied to any infrastucture. There are two important types of files needed to enable data validation.
+The validation phase of the pipeline is a basic data check. Data in your mdd-data directory (source of truth) is compared to schemas that represent what you want your network to look like. These schemas verify configuration changes match or are compliant before being applied to any infrastructure. There are two important types of files needed to enable data validation.
 
-* validate-xxxxxx.yml: Any file that starts with the word "validate" inside of your mdd-data directory will be picked up when the pipeline executes. The validate files point to a series of templates to compare data to.
+* validate-xxxxxx.yml: Any file that starts with the word "validate" inside your mdd-data directory will be picked up when the pipeline executes. The validate files point to a series of templates to compare data to.
 * schemas: Schemas represent the desired configuration of your network. Before any changes are made to your test environment, data must match the schema. This is a quick way to make sure you remain compliant BEFORE any changes are implemented into any environment.
 
 ## Validation Files
@@ -45,7 +45,7 @@ mdd_schemas:
 ```
 The above example is your validate-system.yml. The mdd_tags variable at the top tells the pipeline to only run the validation against devices in your inventory that include a specific tag. For example, if mdd_tags was set to "routers", it would only run against devices with the tag "routers".
 
-the mdd_schemas variable provides the pipeline with the name and location of the schema that will be used for validation. Simple schemas that are looking for static settings can be written as .yml or .json. If you want to create flexible schemas to check for data that may be more dynamic, you can use Jinja 2 and provide your validate file with the specefic vars you want to check. In the above example, you can see the last schema is checking for a consistent domain name across all devices and its pointing to the "local" folder. 
+The mdd_schemas variable provides the pipeline with the name and location of the schema that will be used for validation. Simple schemas that are looking for static settings can be written as .yml or .json. If you want to create flexible schemas to check for data that may be more dynamic, you can use Jinja2 and provide your validate file with the specific vars you want to check. In the above example, you can see the last schema is checking for a consistent domain name across all devices and its pointing to the "local" folder. 
 
 ## Schema files
 
@@ -79,7 +79,7 @@ To enable validation, you just need to move the validate-system.yml file into yo
 
 ![21f60813-5940-4789-b781-4b9f6cea8b05](https://github.com/model-driven-devops/mdd-base/assets/65776483/8ab8f452-a624-4a65-b642-437c6e2df056)
 
-Select "Commit" once moved and select "commit new branch". Commiting to a branch will kick off the CI part of the pipeline. You can select the CI/CD option on your sidebar to see the pipeline run. You will eventually see a red x for the second stage of the pipeline indicating the validation phase failed.
+Select "Commit" once moved and select "commit new branch". Committing to a branch will kick off the CI part of the pipeline. You can select the CI/CD option on your sidebar to see the pipeline run. You will eventually see a red x for the second stage of the pipeline indicating the validation phase failed.
 
 ![Screenshot 2023-08-21 at 2 17 28 PM](https://github.com/model-driven-devops/mdd-base/assets/65776483/0035a740-dfb9-4456-bceb-1f6d4df48669)
 
@@ -111,8 +111,8 @@ Commit this change to your existing branch.
 
 ![Screenshot 2023-08-21 at 2 36 53 PM](https://github.com/model-driven-devops/mdd-base/assets/65776483/5e1531a9-4e51-4be3-ade6-41684d984d67)
 
-Congrats! You have completed a sucessful CI pipeline run. Once you see your validation has passed, you can navigate to "Merge Requests" and select "Merge". This will update the main branch and push your domain name changes to your production environment.
+Congrats! You have completed a successful CI pipeline run. Once you see your validation has passed, you can navigate to "Merge Requests" and select "Merge". This will update the main branch and push your domain name changes to your production environment.
 
 ![Screenshot 2023-08-21 at 2 38 03 PM](https://github.com/model-driven-devops/mdd-base/assets/65776483/3462f702-3b87-47ac-9b89-dfbbdf4e7002)
 
-Congrats! Now you are validating any configuration changes before they are made to your test network. Now lets add some [Stateful Checks](check.md).
+Congrats! Now you are validating any configuration changes before they are made to your test network. Now let's add some [Stateful Checks](check.md).
