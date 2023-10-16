@@ -1,6 +1,7 @@
 stages:
   - clean
   - build-cml
+  - build-prod
   - build-nso
   - init-nso
   - save-rollback
@@ -32,6 +33,16 @@ build-cml:
   resource_group: mdd
   rules:
     - if: $CLEAN == "true"
+
+build-prod:
+  stage: build-prod
+  script:
+    - ansible-playbook -i inventory_prod cisco.cml.build -e startup='host' -e wait='yes' -e retries=100
+  resource_group: mdd
+  variables:
+    CML_LAB: $PROD_CML_LAB
+  rules:
+    - if: $BUILD_PROD == "true"
 
 build-nso:
   stage: build-nso
