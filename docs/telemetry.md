@@ -20,7 +20,7 @@ Now that our check has passed, we should be streaming netflow into our elastic s
 
 ## Using Kibana
 
-Navigate to your telemetry host IP address with port 5601 - https://ip-address:5601. You can login with the default elastic password we set earlier.
+Navigate to your telemetry host IP address with port 5601 - https://ip-address:5601. You can log in with the default elastic password we set earlier.
 
 ![Screenshot 2023-09-08 at 5 19 13 PM](https://github.com/model-driven-devops/mdd-base/assets/65776483/10285af8-ccf9-4cfd-8c15-3630181782c2)
 
@@ -32,7 +32,7 @@ You can select Dashboards from the menu and search for "netflow". Select any of 
 ## Building a Dashboard
 
 ## Modifying Filebeat
-Navigate back to your virtual desktip and VScode instance. You'll notice in the telemetry folder there are two templates. These templates an be modified and sent to the telemetry node using an ansible playbook.
+Navigate back to your virtual desktop and VScode instance. You'll notice in the telemetry folder there are two templates. These templates an be modified and sent to the telemetry node using an ansible playbook.
 
 ![Screenshot 2023-09-08 at 5 30 04 PM](https://github.com/model-driven-devops/mdd-base/assets/65776483/f63d6ee3-741c-4419-967a-e55e52af823f)
 

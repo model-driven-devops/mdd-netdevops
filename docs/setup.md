@@ -29,7 +29,7 @@ cd <your-repo-name>
 ```
 ## Local Environment Setup
 
-There are multiple dependancies needed to execute the automation in this repository. It is recommended you create a virtual environment to run the workflows without conflict:
+There are multiple dependencies needed to execute the automation in this repository. It is recommended you create a virtual environment to run the workflows without conflict:
 ```
 python3 -m venv venv-mdd
 . ./venv-mdd/bin/activate
