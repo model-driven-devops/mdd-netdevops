@@ -71,7 +71,7 @@ Once the containers are up and running, you will see a report verifying each one
 
 ![Screenshot 2023-09-05 at 10 28 07 AM](https://github.com/model-driven-devops/mdd-base/assets/65776483/82814491-3e63-48d6-8e14-f34f7f58e31f)
 
-One complete, you can navigate to the IP address of your telemetry host using port 5601 to verify elastic came up.
+Once complete, you can navigate to the IP address of your telemetry host using port 5601 to verify elastic came up.
 
 ![Screenshot 2023-09-11 at 11 48 52 AM](https://github.com/model-driven-devops/mdd-base/assets/65776483/e2655d34-133d-4efd-b474-addda881796b)
 
