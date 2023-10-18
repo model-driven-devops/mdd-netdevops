@@ -1,12 +1,12 @@
 # Table Of Contents
 
-* [Initial Setup](docs/setup.md)
-* [Topology Creation](docs/topology.md)
-* [Data Harvest](docs/dataharvest.md)
-* [Pipeline Deployment](docs/pipeline.md)
-* [Data Validation](docs/validation.md)
-* [Stateful Checks](docs/check.md)
-* [Telemetry Collection](docs/telemetry.md)
+* [Initial Setup](setup.md)
+* [Topology Creation](topology.md)
+* [Data Harvest](dataharvest.md)
+* [Pipeline Deployment](pipeline.md)
+* [Data Validation](validation.md)
+* [Stateful Checks](check.md)
+* [Telemetry Collection](telemetry.md)
    * [Using Kibana]
    * [Building a Dashboard]
    * [Modifying Filebeat]
