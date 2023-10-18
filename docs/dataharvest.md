@@ -183,4 +183,4 @@ This is all done with the custom data filter `ciscops.mdd.mdd_combine` that is b
 
 This invocation of the `ciscops.mdd.mdd_combine` filter takes the default data and a list of patches and combines it recursively to produce one data structure where the patches later in the list take precedence over the data earlier in the list.
 
-Now that you have seen how the data is constructed, in the next exercise you will expore how the data can be validated.
+Now that you have seen how the data is constructed, let's use it in a CI/CD pipeline.
